@@ -6,15 +6,19 @@ import './App.css'
 
 import ProtectedRoute from './components/ProtectedRoute'
 
+import DashboardLayout from './components/layout/DashboardLayout'
+
 function App() {
   return (
     <Routes>
       <Route path="/" element={<LandingPage />} />
       <Route 
-        path="/dashboard" 
+        path="/dashboard/*" 
         element={
           <ProtectedRoute>
-            <Dashboard />
+            <DashboardLayout>
+              <Dashboard />
+            </DashboardLayout>
           </ProtectedRoute>
         } 
       />
