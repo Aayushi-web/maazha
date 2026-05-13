@@ -1,9 +1,30 @@
 import type { Booking, DashboardStats, Property, RevenueData, Tenant } from '../types/dashboard';
 
 export const mockProperties: Property[] = [
-  { id: 'p1', name: 'Sunrise PG', type: 'PG', totalRooms: 40, availableRooms: 5, location: 'Koramangala, Bangalore', status: 'Active' },
-  { id: 'p2', name: 'Blue Horizon Hostel', type: 'Hostel', totalRooms: 100, availableRooms: 12, location: 'HSR Layout, Bangalore', status: 'Active' },
-  { id: 'p3', name: 'Oakwood Apartments', type: 'Apartment', totalRooms: 20, availableRooms: 0, location: 'Indiranagar, Bangalore', status: 'Active' },
+  { 
+    id: 'p1', name: 'Narcissus Hotel', type: 'Hotel', totalRooms: 40, availableRooms: 5, location: 'Kas', status: 'Active',
+    imageUrl: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    rating: 9.1, reviewCount: 895, pricePerNight: 100, distance: '1 km from the City Centre', isAllInclusive: true,
+    amenities: ['Free Wifi', 'Pool', 'Breakfast Included']
+  },
+  { 
+    id: 'p2', name: 'Viva Hotel', type: 'Hotel', totalRooms: 100, availableRooms: 12, location: 'Kas', status: 'Active',
+    imageUrl: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    rating: 7.5, reviewCount: 702, pricePerNight: 98, distance: '1.2 km from the City Centre', isAllInclusive: true,
+    amenities: ['Free Wifi', 'Pool']
+  },
+  { 
+    id: 'p3', name: 'Lila Hotel', type: 'Hotel', totalRooms: 20, availableRooms: 0, location: 'Kas', status: 'Active',
+    imageUrl: 'https://images.unsplash.com/photo-1498503182468-3b51cbb6cb24?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    rating: 8.5, reviewCount: 600, pricePerNight: 120, distance: '0.4 km from the City Centre', isAllInclusive: true,
+    amenities: ['Free Wifi', 'Adults Only', 'Breakfast Included']
+  },
+  { 
+    id: 'p4', name: 'Marin Hotel', type: 'Hotel', totalRooms: 35, availableRooms: 8, location: 'Kas', status: 'Active',
+    imageUrl: 'https://images.unsplash.com/photo-1542314831-c6a4d14d8373?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    rating: 8.7, reviewCount: 700, pricePerNight: 150, distance: '0.1 km from the City Centre', isAllInclusive: true,
+    amenities: ['Free Wifi', 'Pool', 'Beachfront']
+  },
 ];
 
 export const mockTenants: Tenant[] = [
@@ -38,6 +59,10 @@ export const mockStats: DashboardStats = {
 };
 
 // Simulated API calls for future Firebase integration
+export const fetchProperties = async (): Promise<Property[]> => {
+  return new Promise((resolve) => setTimeout(() => resolve(mockProperties), 500));
+};
+
 export const fetchDashboardStats = async (): Promise<DashboardStats> => {
   return new Promise((resolve) => setTimeout(() => resolve(mockStats), 600));
 };

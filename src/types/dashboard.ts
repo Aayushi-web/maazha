@@ -6,6 +6,14 @@ export interface Property {
   availableRooms: number;
   location: string;
   status: 'Active' | 'Maintenance' | 'Inactive';
+  // New fields for the rich properties view
+  imageUrl?: string;
+  rating?: number;
+  reviewCount?: number;
+  pricePerNight?: number;
+  amenities?: string[];
+  distance?: string;
+  isAllInclusive?: boolean;
 }
 
 export interface Tenant {
