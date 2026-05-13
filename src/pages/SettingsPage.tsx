@@ -146,7 +146,7 @@ const SettingsPage = () => {
             <p className="plan-status">Active until Dec 31, 2026</p>
           </div>
           <div className="plan-price">
-            <span className="amount">$49</span><span className="period">/mo</span>
+            <span className="amount">₹49</span><span className="period">/mo</span>
           </div>
         </div>
         <div className="plan-actions">

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { X, Hash, Users, DollarSign } from 'lucide-react';
+import { X, Hash, Users, IndianRupee } from 'lucide-react';
 
 interface AddRoomModalProps {
   isOpen: boolean;
@@ -69,9 +69,9 @@ const AddRoomModal = ({ isOpen, onClose, propertyId }: AddRoomModalProps) => {
 
           <div className="form-row">
             <div className="form-group">
-              <label>Price Per Night ($) *</label>
+              <label>Price Per Night (₹) *</label>
               <div className="input-with-icon">
-                <DollarSign size={16} className="input-icon" />
+                <IndianRupee size={16} className="input-icon" />
                 <input type="number" name="price" className="mz-input" value={formData.price} onChange={handleChange} required min="0" />
               </div>
             </div>

@@ -124,8 +124,8 @@ const PropertiesPage = () => {
                 <div className="slider-handle right"></div>
               </div>
               <div className="price-labels">
-                <span>$40</span>
-                <span>$500+</span>
+                <span>₹40</span>
+                <span>₹500+</span>
               </div>
             </div>
           </div>
@@ -236,7 +236,7 @@ const PropertiesPage = () => {
                     <div className="property-pricing">
                       <div className="pricing-info">
                         <span className="stay-duration">1 night, 2 adults</span>
-                        <h3 className="price-total">${property.pricePerNight}</h3>
+                        <h3 className="price-total">₹{property.pricePerNight}</h3>
                         <span className="tax-info">Including Taxes and Fees</span>
                       </div>
                       <button 

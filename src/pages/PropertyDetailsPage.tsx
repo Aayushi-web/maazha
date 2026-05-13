@@ -78,7 +78,7 @@ const PropertyDetailsPage = () => {
             </div>
             <div className="stat-item">
               <span className="stat-label">Base Price</span>
-              <span className="stat-value">${property.pricePerNight}/night</span>
+              <span className="stat-value">₹{property.pricePerNight}/night</span>
             </div>
           </div>
           
@@ -125,7 +125,7 @@ const PropertyDetailsPage = () => {
                       <td className="font-bold">{room.roomNumber}</td>
                       <td>{room.type}</td>
                       <td>{room.capacity} Guests</td>
-                      <td className="font-bold">${room.price}</td>
+                      <td className="font-bold">₹{room.price}</td>
                       <td>
                         <span className={`mz-badge ${getStatusBadge(room.status)}`}>{room.status}</span>
                       </td>

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { X, Building, MapPin, DollarSign, Image as ImageIcon, Map } from 'lucide-react';
+import { X, Building, MapPin, IndianRupee, Image as ImageIcon, Map } from 'lucide-react';
 import type { Property } from '../../types/dashboard';
 import './AddPropertyModal.css';
 
@@ -151,10 +151,10 @@ const AddPropertyModal = ({ isOpen, onClose, onAdd }: AddPropertyModalProps) => 
           <div className="form-section">
             <h4 className="section-title">Pricing & Amenities</h4>
             <div className="form-group mb-4">
-              <label>Price Per Night ($) *</label>
+              <label>Price Per Night (₹) *</label>
               <div className="input-with-icon" style={{width: '50%'}}>
-                <DollarSign size={16} className="input-icon" />
-                <input type="number" name="pricePerNight" className="mz-input" placeholder="e.g. 100" value={formData.pricePerNight} onChange={handleChange} required min="0" />
+                <IndianRupee size={16} className="input-icon" />
+                <input type="number" name="pricePerNight" className="mz-input" placeholder="e.g. 8500" value={formData.pricePerNight} onChange={handleChange} required min="0" />
               </div>
             </div>
             

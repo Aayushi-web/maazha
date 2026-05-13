@@ -2,41 +2,44 @@ import type { Booking, DashboardStats, Property, RevenueData, Tenant, Transactio
 
 export const mockProperties: Property[] = [
   { 
-    id: 'p1', name: 'Narcissus Hotel', type: 'Hotel', totalRooms: 40, availableRooms: 5, location: 'Kas', status: 'Active',
+    id: 'p1', name: 'Sunrise PG', type: 'PG', totalRooms: 40, availableRooms: 5, location: 'Kas', status: 'Active',
     imageUrl: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    rating: 9.1, ratingText: 'Extraordinary', reviewCount: 895, pricePerNight: 100, distance: '1 km from the City Centre', isAllInclusive: true,
+    rating: 9.1, ratingText: 'Extraordinary', reviewCount: 895, pricePerNight: 8500, distance: '1 km from the City Centre', isAllInclusive: true,
     amenities: ['Free Wifi', 'Pool', 'Breakfast Included']
   },
   { 
-    id: 'p2', name: 'Viva Hotel', type: 'Hotel', totalRooms: 100, availableRooms: 12, location: 'Kas', status: 'Active',
+    id: 'p2', name: 'Blue Horizon Hostel', type: 'Hostel', totalRooms: 100, availableRooms: 12, location: 'Kas', status: 'Active',
     imageUrl: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    rating: 7.5, ratingText: 'Good', reviewCount: 702, pricePerNight: 98, distance: '1.2 km from the City Centre', isAllInclusive: true,
+    rating: 7.5, ratingText: 'Good', reviewCount: 702, pricePerNight: 6500, distance: '1.2 km from the City Centre', isAllInclusive: true,
     amenities: ['Free Wifi', 'Pool']
   },
   { 
-    id: 'p3', name: 'Lila Hotel', type: 'Hotel', totalRooms: 20, availableRooms: 0, location: 'Kas', status: 'Active',
+    id: 'p3', name: 'Oakwood Apartments', type: 'Apartment', totalRooms: 20, availableRooms: 0, location: 'Kas', status: 'Active',
     imageUrl: 'https://images.unsplash.com/photo-1498503182468-3b51cbb6cb24?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    rating: 8.5, ratingText: 'Good', reviewCount: 600, pricePerNight: 120, distance: '0.4 km from the City Centre', isAllInclusive: true,
+    rating: 8.5, ratingText: 'Good', reviewCount: 600, pricePerNight: 25000, distance: '0.4 km from the City Centre', isAllInclusive: true,
     amenities: ['Free Wifi', 'Adults Only', 'Breakfast Included']
   },
   { 
     id: 'p4', name: 'Marin Hotel', type: 'Hotel', totalRooms: 35, availableRooms: 8, location: 'Kas', status: 'Active',
     imageUrl: 'https://images.unsplash.com/photo-1542314831-c6a4d14d8373?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    rating: 8.7, ratingText: 'Very Good', reviewCount: 700, pricePerNight: 150, distance: '0.1 km from the City Centre', isAllInclusive: true,
+    rating: 8.7, ratingText: 'Very Good', reviewCount: 700, pricePerNight: 12000, distance: '0.1 km from the City Centre', isAllInclusive: true,
     amenities: ['Free Wifi', 'Pool', 'Beachfront']
   },
 ];
 
 export const mockRooms: Room[] = [
-  { id: 'r1', propertyId: 'p1', roomNumber: '101', type: 'Single', capacity: 1, price: 80, status: 'Occupied' },
-  { id: 'r2', propertyId: 'p1', roomNumber: '102', type: 'Double', capacity: 2, price: 100, status: 'Available' },
-  { id: 'r3', propertyId: 'p1', roomNumber: '103', type: 'Double', capacity: 2, price: 100, status: 'Occupied' },
-  { id: 'r4', propertyId: 'p1', roomNumber: '201', type: 'Suite', capacity: 4, price: 250, status: 'Available' },
-  { id: 'r5', propertyId: 'p1', roomNumber: '202', type: 'Suite', capacity: 4, price: 250, status: 'Maintenance' },
+  { id: 'r1', propertyId: 'p1', roomNumber: '101', type: 'Single', capacity: 1, price: 8500, status: 'Occupied' },
+  { id: 'r2', propertyId: 'p1', roomNumber: '102', type: 'Double', capacity: 2, price: 8500, status: 'Occupied' },
+  { id: 'r3', propertyId: 'p1', roomNumber: '105', type: 'Double', capacity: 2, price: 8500, status: 'Occupied' },
+  { id: 'r4', propertyId: 'p1', roomNumber: '201', type: 'Suite', capacity: 4, price: 15000, status: 'Available' },
+  { id: 'r5', propertyId: 'p1', roomNumber: '202', type: 'Suite', capacity: 4, price: 15000, status: 'Maintenance' },
   
-  { id: 'r6', propertyId: 'p2', roomNumber: 'A-10', type: 'Double', capacity: 2, price: 98, status: 'Available' },
-  { id: 'r7', propertyId: 'p2', roomNumber: 'A-11', type: 'Double', capacity: 2, price: 98, status: 'Available' },
-  { id: 'r8', propertyId: 'p2', roomNumber: 'B-01', type: 'Suite', capacity: 5, price: 300, status: 'Occupied' },
+  { id: 'r6', propertyId: 'p2', roomNumber: '301', type: 'Single', capacity: 1, price: 4500, status: 'Available' },
+  { id: 'r7', propertyId: 'p2', roomNumber: '304B', type: 'Double', capacity: 2, price: 6500, status: 'Occupied' },
+  { id: 'r8', propertyId: 'p2', roomNumber: '401', type: 'Dorm', capacity: 5, price: 2000, status: 'Available' },
+  
+  { id: 'r9', propertyId: 'p3', roomNumber: 'A-402', type: 'Suite', capacity: 4, price: 25000, status: 'Available' },
+  { id: 'r10', propertyId: 'p3', roomNumber: 'B-201', type: 'Suite', capacity: 4, price: 25000, status: 'Occupied' },
 ];
 
 export const mockTenants: Tenant[] = [
