@@ -1,38 +1,83 @@
 import { useState } from 'react';
-import { X, Building, MapPin, DollarSign, Image as ImageIcon } from 'lucide-react';
+import { X, Building, MapPin, DollarSign, Image as ImageIcon, Map } from 'lucide-react';
+import type { Property } from '../../types/dashboard';
 import './AddPropertyModal.css';
 
 interface AddPropertyModalProps {
   isOpen: boolean;
   onClose: () => void;
+  onAdd: (property: Property) => void;
 }
 
-const AddPropertyModal = ({ isOpen, onClose }: AddPropertyModalProps) => {
+const AddPropertyModal = ({ isOpen, onClose, onAdd }: AddPropertyModalProps) => {
   const [formData, setFormData] = useState({
     name: '',
-    type: 'Hotel',
+    type: 'Hotel' as Property['type'],
     location: '',
+    distance: '',
     pricePerNight: '',
     totalRooms: '',
     imageUrl: '',
-    isAllInclusive: false
+  });
+
+  const [amenities, setAmenities] = useState({
+    'Free Wifi': false,
+    'Pool': false,
+    'Spa': false,
+    'Parking': false,
+    'Gym': false,
+    'Breakfast Included': false,
+    'Beachfront': false,
+    'All-inclusive': false,
   });
 
   if (!isOpen) return null;
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { name, value, type } = e.target;
-    if (type === 'checkbox') {
-      const target = e.target as HTMLInputElement;
-      setFormData(prev => ({ ...prev, [name]: target.checked }));
-    } else {
-      setFormData(prev => ({ ...prev, [name]: value }));
-    }
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleAmenityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, checked } = e.target;
+    setAmenities(prev => ({ ...prev, [name]: checked }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Submitting property", formData);
+    
+    const selectedAmenities = Object.entries(amenities)
+      .filter(([_, isSelected]) => isSelected)
+      .map(([name]) => name);
+
+    const newProperty: Property = {
+      id: `p${Math.floor(Math.random() * 10000)}`,
+      name: formData.name,
+      type: formData.type,
+      location: formData.location,
+      distance: formData.distance || '0 km from the City Centre',
+      totalRooms: parseInt(formData.totalRooms) || 0,
+      availableRooms: parseInt(formData.totalRooms) || 0, // Assume all available initially
+      status: 'Active',
+      imageUrl: formData.imageUrl || 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80',
+      pricePerNight: parseInt(formData.pricePerNight) || 0,
+      rating: 0,
+      ratingText: 'New',
+      reviewCount: 0,
+      isAllInclusive: amenities['All-inclusive'],
+      amenities: selectedAmenities
+    };
+
+    onAdd(newProperty);
+    
+    // Reset form
+    setFormData({
+      name: '', type: 'Hotel', location: '', distance: '', pricePerNight: '', totalRooms: '', imageUrl: ''
+    });
+    setAmenities({
+      'Free Wifi': false, 'Pool': false, 'Spa': false, 'Parking': false, 'Gym': false, 'Breakfast Included': false, 'Beachfront': false, 'All-inclusive': false
+    });
+    
     onClose();
   };
 
@@ -69,21 +114,31 @@ const AddPropertyModal = ({ isOpen, onClose }: AddPropertyModalProps) => {
               </div>
               <div className="form-group">
                 <label>Total Rooms *</label>
-                <input type="number" name="totalRooms" className="mz-input" placeholder="e.g. 50" value={formData.totalRooms} onChange={handleChange} required />
+                <input type="number" name="totalRooms" className="mz-input" placeholder="e.g. 50" value={formData.totalRooms} onChange={handleChange} required min="1" />
               </div>
             </div>
           </div>
 
           <div className="form-section">
             <h4 className="section-title">Location & Media</h4>
-            <div className="form-group">
-              <label>Location / Address *</label>
-              <div className="input-with-icon">
-                <MapPin size={16} className="input-icon" />
-                <input type="text" name="location" className="mz-input" placeholder="e.g. Kas Center, Antalya" value={formData.location} onChange={handleChange} required />
+            <div className="form-row">
+              <div className="form-group">
+                <label>Location / Address *</label>
+                <div className="input-with-icon">
+                  <MapPin size={16} className="input-icon" />
+                  <input type="text" name="location" className="mz-input" placeholder="e.g. Kas Center, Antalya" value={formData.location} onChange={handleChange} required />
+                </div>
+              </div>
+              <div className="form-group">
+                <label>Distance from Center</label>
+                <div className="input-with-icon">
+                  <Map size={16} className="input-icon" />
+                  <input type="text" name="distance" className="mz-input" placeholder="e.g. 1.5 km" value={formData.distance} onChange={handleChange} />
+                </div>
               </div>
             </div>
-            <div className="form-group">
+            
+            <div className="form-group mt-2">
               <label>Image URL</label>
               <div className="input-with-icon">
                 <ImageIcon size={16} className="input-icon" />
@@ -95,19 +150,28 @@ const AddPropertyModal = ({ isOpen, onClose }: AddPropertyModalProps) => {
 
           <div className="form-section">
             <h4 className="section-title">Pricing & Amenities</h4>
-            <div className="form-row">
-              <div className="form-group">
-                <label>Price Per Night ($) *</label>
-                <div className="input-with-icon">
-                  <DollarSign size={16} className="input-icon" />
-                  <input type="number" name="pricePerNight" className="mz-input" placeholder="e.g. 100" value={formData.pricePerNight} onChange={handleChange} required />
-                </div>
+            <div className="form-group mb-4">
+              <label>Price Per Night ($) *</label>
+              <div className="input-with-icon" style={{width: '50%'}}>
+                <DollarSign size={16} className="input-icon" />
+                <input type="number" name="pricePerNight" className="mz-input" placeholder="e.g. 100" value={formData.pricePerNight} onChange={handleChange} required min="0" />
               </div>
-              <div className="form-group checkbox-group">
-                <label className="checkbox-item mt-4">
-                  <input type="checkbox" name="isAllInclusive" checked={formData.isAllInclusive} onChange={handleChange} />
-                  <span className="checkbox-label">All-Inclusive</span>
-                </label>
+            </div>
+            
+            <div className="form-group">
+              <label>Select Amenities</label>
+              <div className="amenities-grid">
+                {Object.keys(amenities).map((am) => (
+                  <label key={am} className="checkbox-item">
+                    <input 
+                      type="checkbox" 
+                      name={am} 
+                      checked={amenities[am as keyof typeof amenities]} 
+                      onChange={handleAmenityChange} 
+                    />
+                    <span className="checkbox-label">{am}</span>
+                  </label>
+                ))}
               </div>
             </div>
           </div>

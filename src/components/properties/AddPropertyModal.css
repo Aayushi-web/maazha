@@ -121,6 +121,13 @@
   justify-content: center;
 }
 
+.amenities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+
 .modal-actions {
   display: flex;
   justify-content: flex-end;
@@ -129,6 +136,10 @@
   padding-top: var(--space-4);
   border-top: 1px solid var(--border-default);
 }
+
+/* Utilities */
+.mt-2 { margin-top: var(--space-2); }
+.mb-4 { margin-bottom: var(--space-4); }
 
 @keyframes fadeIn {
   from { opacity: 0; }
