@@ -140,6 +140,7 @@
 
 .mz-hero__headline-strong {
   font-weight: 700;
+  padding-bottom: 12px;
 }
 
 .mz-hero__headline-light {
@@ -1049,7 +1050,7 @@
   width: 54px;
   height: 54px;
   border-radius: var(--radius-md);
-  background: var(--color-ice);
+  background: var(--bg-struggle-box);
 }
 
 .mz-struggle-card > span::before,
