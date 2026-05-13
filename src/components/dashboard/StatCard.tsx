@@ -12,27 +12,24 @@ interface StatCardProps {
   colorClass?: string;
 }
 
-const StatCard: React.FC<StatCardProps> = ({ title, value, icon: Icon, trend, colorClass = 'brand' }) => {
+const StatCard = ({ title, value, icon: Icon, trend, colorClass = 'brand' }: StatCardProps) => {
   return (
-    <div className={`mz-card stat-card border-top-${colorClass}`}>
+    <div className="mz-card stat-card-custom">
       <div className="stat-card-header">
-        <h3 className="stat-title">{title}</h3>
-        <div className={`stat-icon-wrapper bg-${colorClass}`}>
-          <Icon className="stat-icon" size={20} />
+        <div className={`stat-card-icon bg-${colorClass}`}>
+          <Icon size={20} />
         </div>
       </div>
+      <p className="stat-card-title">{title}</p>
+      <h3 className="stat-card-value">{value}</h3>
       
-      <div className="stat-card-body">
-        <div className="stat-value text-display">{value}</div>
-        
-        {trend && (
-          <div className={`stat-trend ${trend.isPositive ? 'trend-up' : 'trend-down'}`}>
-            <span className="trend-indicator">{trend.isPositive ? '↑' : '↓'}</span>
-            <span className="trend-value">{Math.abs(trend.value)}%</span>
-            <span className="trend-label">vs last month</span>
-          </div>
-        )}
-      </div>
+      {trend && (
+        <div className={`stat-trend mt-2 ${trend.isPositive ? 'trend-up' : 'trend-down'}`}>
+          <span className="trend-indicator">{trend.isPositive ? '↑' : '↓'}</span>
+          <span className="trend-value">{Math.abs(trend.value)}%</span>
+          <span className="trend-label">vs last month</span>
+        </div>
+      )}
     </div>
   );
 };

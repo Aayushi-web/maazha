@@ -1,26 +1,17 @@
-.stat-card {
+.stat-card-custom {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
-  position: relative;
-  overflow: hidden;
   padding: var(--space-5);
+  gap: var(--space-2);
 }
 
 .stat-card-header {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  justify-content: flex-start;
+  margin-bottom: var(--space-2);
 }
 
-.stat-title {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--text-secondary);
-  margin: 0;
-}
-
-.stat-icon-wrapper {
+.stat-card-icon {
   width: 40px;
   height: 40px;
   border-radius: var(--radius-md);
@@ -29,20 +20,30 @@
   justify-content: center;
 }
 
-/* Icon colors */
+/* Background Colors for Icons */
 .bg-brand {
-  background-color: var(--color-ice);
-  color: var(--color-deepsky);
+  background-color: rgba(91, 174, 224, 0.15);
+  color: var(--color-brand);
 }
 
 .bg-success {
-  background-color: #d4f5e5;
-  color: #1a6b44;
+  background-color: rgba(46, 204, 113, 0.15);
+  color: var(--status-success);
 }
 
 .bg-warning {
-  background-color: #fef3d7;
-  color: #9a6400;
+  background-color: rgba(245, 166, 35, 0.15);
+  color: var(--status-warning);
+}
+
+.bg-error {
+  background-color: rgba(231, 76, 60, 0.15);
+  color: var(--status-error);
+}
+
+.bg-mist {
+  background-color: rgba(149, 165, 166, 0.15);
+  color: var(--text-muted);
 }
 
 .bg-purple {
@@ -50,28 +51,24 @@
   color: #7e22ce;
 }
 
-/* Top borders */
-.border-top-brand {
-  border-top: 3px solid var(--color-brand);
+.stat-card-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
 }
 
-.border-top-success {
-  border-top: 3px solid var(--status-success);
-}
-
-.border-top-warning {
-  border-top: 3px solid var(--status-warning);
-}
-
-.border-top-purple {
-  border-top: 3px solid #a855f7;
-}
-
-.stat-value {
-  font-size: 2rem !important; /* Overriding text-display for cards */
-  font-weight: 700;
+.stat-card-value {
+  font-size: 1.75rem !important;
+  font-weight: 800;
   color: var(--color-midnight);
-  margin-bottom: var(--space-2);
+  margin: 0;
+}
+
+.mt-2 {
+  margin-top: var(--space-2);
 }
 
 .stat-trend {
