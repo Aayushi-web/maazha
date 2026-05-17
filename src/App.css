@@ -2012,7 +2012,22 @@
 }
 
 .mz-journey-tab__icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  color: var(--color-brand);
   font-size: 32px;
+}
+
+.mz-journey-tab__icon svg,
+.mz-ecosystem-icon svg {
+  width: 34px;
+  height: 34px;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .mz-journey-tab strong {
@@ -2149,6 +2164,13 @@
 }
 
 .mz-ecosystem-icon {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  color: var(--color-brand);
+  border-radius: var(--radius-md);
+  background: var(--color-ice);
   font-size: 40px;
   margin-bottom: 12px;
 }
@@ -2168,6 +2190,26 @@
   padding: 6px 0;
   color: var(--text-secondary);
   font-size: 0.85rem;
+}
+
+.mz-ecosystem-card--stacked > ul {
+  display: grid;
+  gap: 20px;
+}
+
+.mz-ecosystem-card__group {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 16px;
+  padding: 0;
+}
+
+.mz-ecosystem-card__group .mz-ecosystem-icon {
+  margin-bottom: 0;
+}
+
+.mz-ecosystem-card__group h3 {
+  margin-bottom: 8px;
 }
 
 .mz-ecosystem-center {
@@ -2279,6 +2321,19 @@
 .mz-demo-cta .mz-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.mz-demo-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+
+.mz-demo-cta__meta {
+  margin-top: 18px;
+  color: rgba(255, 255, 255, 0.86);
+  font-weight: 600;
 }
 
 /* Animations */

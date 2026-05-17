@@ -1,23 +1,22 @@
-import { NavLink } from 'react-router-dom';
-import { LayoutDashboard, Building2, Users, CalendarDays, Wallet, Settings, LogOut } from 'lucide-react';
+import { Link, NavLink } from 'react-router-dom';
+import { LayoutDashboard, Building2, ReceiptIndianRupee, Users, WalletCards, LogOut } from 'lucide-react';
 import './Sidebar.css';
 
 const Sidebar = () => {
   const navItems = [
     { icon: LayoutDashboard, label: 'Dashboard', path: '/dashboard' },
-    { icon: Building2, label: 'Properties', path: '/properties' },
-    { icon: Users, label: 'Tenants', path: '/tenants' },
-    { icon: CalendarDays, label: 'Bookings', path: '/bookings' },
-    { icon: Wallet, label: 'Finance', path: '/finance' },
-    { icon: Settings, label: 'Settings', path: '/settings' },
+    { icon: Building2, label: 'Property Management', path: '/property-management' },
+    { icon: Users, label: 'Tenant Management', path: '/tenant-management' },
+    { icon: ReceiptIndianRupee, label: 'Rent Management', path: '/rent-management' },
+    { icon: WalletCards, label: 'Expense Management', path: '/expense-management' },
   ];
 
   return (
     <aside className="dashboard-sidebar">
-      <div className="sidebar-brand">
+      <Link className="sidebar-brand" to="/" aria-label="Go to Maazha home page">
         <div className="brand-logo">M</div>
         <span className="brand-text">Maazha</span>
-      </div>
+      </Link>
 
       <nav className="sidebar-nav">
         {navItems.map((item, index) => (

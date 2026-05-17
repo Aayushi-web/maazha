@@ -15,6 +15,13 @@ export interface Property {
   amenities?: string[];
   distance?: string;
   isAllInclusive?: boolean;
+  totalBeds?: number;
+  filledBeds?: number;
+  tenantCapacity?: number;
+  upcomingTenants?: number;
+  noticePeriodTenants?: number;
+  monthlyRentTarget?: number;
+  monthlyExpenseBudget?: number;
 }
 
 export interface Room {
@@ -25,34 +32,6 @@ export interface Room {
   capacity: number;
   price: number;
   status: 'Available' | 'Occupied' | 'Maintenance';
-}
-
-export interface Tenant {
-  id: string;
-  name: string;
-  email: string;
-  phone: string;
-  propertyId: string;
-  roomNumber: string;
-  status: 'Active' | 'Inactive' | 'Pending';
-  joinDate: string;
-}
-
-export interface Booking {
-  id: string;
-  tenantName: string;
-  propertyId: string;
-  propertyName: string;
-  roomNumber: string;
-  checkInDate: string;
-  checkOutDate: string;
-  amount: number;
-  status: 'Confirmed' | 'Pending' | 'Cancelled' | 'Completed';
-  paymentStatus?: 'Paid' | 'Partial' | 'Unpaid';
-  source?: 'Direct' | 'Booking.com' | 'Airbnb' | 'Agoda';
-  guestEmail?: string;
-  guestPhone?: string;
-  specialRequests?: string;
 }
 
 export interface RevenueData {
@@ -69,7 +48,48 @@ export interface Transaction {
   amount: number;
   type: 'Income' | 'Expense' | 'Refund';
   status: 'Completed' | 'Pending' | 'Failed';
-  referenceId?: string; // e.g. Booking ID, Invoice #
+  propertyId?: string;
+  roomNumber?: string;
+  category?: 'Rent' | 'Security Deposit' | 'Expense';
+  expenseCategory?: 'All Property' | 'Property' | 'Others';
+  expenseName?: string;
+  expenseType?: string;
+  referenceId?: string;
+}
+
+export interface Complaint {
+  id: string;
+  propertyId: string;
+  timestamp: string;
+  complaint: string;
+  type: 'Maintenance' | 'Rent' | 'Housekeeping' | 'Security';
+  action: 'Solved' | 'Solving' | 'Denied';
+}
+
+export interface Tenant {
+  id: string;
+  name: string;
+  tenantType?: 'Bachelor' | 'Family' | 'Couple';
+  propertyId?: string;
+  propertyName: string;
+  roomId?: string;
+  roomNumber: string;
+  bedNumber: string;
+  phone: string;
+  address?: string;
+  parentName?: string;
+  parentMobileNumber?: string;
+  onboardingType?: 'One Day' | 'One Week' | 'Long Stay';
+  fixedRent?: number;
+  securityDeposit?: number;
+  electricity?: {
+    unitCost: number;
+    initialReading: number;
+    remarks?: string;
+  };
+  rentStatus: 'Paid' | 'Pending' | 'Overdue';
+  moveInDate: string;
+  status: 'Active' | 'Upcoming' | 'Notice Period';
 }
 
 export interface DashboardStats {
@@ -78,5 +98,5 @@ export interface DashboardStats {
   occupancyRate: number; // percentage
   monthlyRevenue: number;
   activeGuests: number;
-  pendingBookings: number;
+  pendingRentItems: number;
 }

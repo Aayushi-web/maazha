@@ -1,29 +1,101 @@
-import type { Booking, DashboardStats, Property, RevenueData, Tenant, Transaction, Room } from '../types/dashboard';
+import type { Complaint, DashboardStats, Property, RevenueData, Room, Tenant, Transaction } from '../types/dashboard';
 
 export const mockProperties: Property[] = [
-  { 
-    id: 'p1', name: 'Sunrise PG', type: 'PG', totalRooms: 40, availableRooms: 5, location: 'Kas', status: 'Active',
+  {
+    id: 'p1',
+    name: 'Sunrise PG',
+    type: 'PG',
+    totalRooms: 40,
+    availableRooms: 5,
+    location: 'Kas',
+    status: 'Active',
     imageUrl: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    rating: 9.1, ratingText: 'Extraordinary', reviewCount: 895, pricePerNight: 8500, distance: '1 km from the City Centre', isAllInclusive: true,
-    amenities: ['Free Wifi', 'Pool', 'Breakfast Included']
+    rating: 9.1,
+    ratingText: 'Extraordinary',
+    reviewCount: 895,
+    pricePerNight: 8500,
+    distance: '1 km from the City Centre',
+    isAllInclusive: true,
+    amenities: ['Free Wifi', 'Pool', 'Breakfast Included'],
+    totalBeds: 52,
+    filledBeds: 45,
+    tenantCapacity: 52,
+    upcomingTenants: 3,
+    noticePeriodTenants: 2,
+    monthlyRentTarget: 340000,
+    monthlyExpenseBudget: 85000,
   },
-  { 
-    id: 'p2', name: 'Blue Horizon Hostel', type: 'Hostel', totalRooms: 100, availableRooms: 12, location: 'Kas', status: 'Active',
+  {
+    id: 'p2',
+    name: 'Blue Horizon Hostel',
+    type: 'Hostel',
+    totalRooms: 100,
+    availableRooms: 12,
+    location: 'Kas',
+    status: 'Active',
     imageUrl: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    rating: 7.5, ratingText: 'Good', reviewCount: 702, pricePerNight: 6500, distance: '1.2 km from the City Centre', isAllInclusive: true,
-    amenities: ['Free Wifi', 'Pool']
+    rating: 7.5,
+    ratingText: 'Good',
+    reviewCount: 702,
+    pricePerNight: 6500,
+    distance: '1.2 km from the City Centre',
+    isAllInclusive: true,
+    amenities: ['Free Wifi', 'Pool'],
+    totalBeds: 130,
+    filledBeds: 118,
+    tenantCapacity: 130,
+    upcomingTenants: 8,
+    noticePeriodTenants: 5,
+    monthlyRentTarget: 650000,
+    monthlyExpenseBudget: 140000,
   },
-  { 
-    id: 'p3', name: 'Oakwood Apartments', type: 'Apartment', totalRooms: 20, availableRooms: 0, location: 'Kas', status: 'Active',
+  {
+    id: 'p3',
+    name: 'Oakwood Apartments',
+    type: 'Apartment',
+    totalRooms: 20,
+    availableRooms: 0,
+    location: 'Kas',
+    status: 'Active',
     imageUrl: 'https://images.unsplash.com/photo-1498503182468-3b51cbb6cb24?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    rating: 8.5, ratingText: 'Good', reviewCount: 600, pricePerNight: 25000, distance: '0.4 km from the City Centre', isAllInclusive: true,
-    amenities: ['Free Wifi', 'Adults Only', 'Breakfast Included']
+    rating: 8.5,
+    ratingText: 'Good',
+    reviewCount: 600,
+    pricePerNight: 25000,
+    distance: '0.4 km from the City Centre',
+    isAllInclusive: true,
+    amenities: ['Free Wifi', 'Adults Only', 'Breakfast Included'],
+    totalBeds: 48,
+    filledBeds: 44,
+    tenantCapacity: 48,
+    upcomingTenants: 2,
+    noticePeriodTenants: 1,
+    monthlyRentTarget: 500000,
+    monthlyExpenseBudget: 120000,
   },
-  { 
-    id: 'p4', name: 'Marin Hotel', type: 'Hotel', totalRooms: 35, availableRooms: 8, location: 'Kas', status: 'Active',
+  {
+    id: 'p4',
+    name: 'Marin Hotel',
+    type: 'Hotel',
+    totalRooms: 35,
+    availableRooms: 8,
+    location: 'Kas',
+    status: 'Active',
     imageUrl: 'https://images.unsplash.com/photo-1542314831-c6a4d14d8373?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    rating: 8.7, ratingText: 'Very Good', reviewCount: 700, pricePerNight: 12000, distance: '0.1 km from the City Centre', isAllInclusive: true,
-    amenities: ['Free Wifi', 'Pool', 'Beachfront']
+    rating: 8.7,
+    ratingText: 'Very Good',
+    reviewCount: 700,
+    pricePerNight: 12000,
+    distance: '0.1 km from the City Centre',
+    isAllInclusive: true,
+    amenities: ['Free Wifi', 'Pool', 'Beachfront'],
+    totalBeds: 70,
+    filledBeds: 54,
+    tenantCapacity: 70,
+    upcomingTenants: 4,
+    noticePeriodTenants: 3,
+    monthlyRentTarget: 420000,
+    monthlyExpenseBudget: 105000,
   },
 ];
 
@@ -33,32 +105,11 @@ export const mockRooms: Room[] = [
   { id: 'r3', propertyId: 'p1', roomNumber: '105', type: 'Double', capacity: 2, price: 8500, status: 'Occupied' },
   { id: 'r4', propertyId: 'p1', roomNumber: '201', type: 'Suite', capacity: 4, price: 15000, status: 'Available' },
   { id: 'r5', propertyId: 'p1', roomNumber: '202', type: 'Suite', capacity: 4, price: 15000, status: 'Maintenance' },
-  
   { id: 'r6', propertyId: 'p2', roomNumber: '301', type: 'Single', capacity: 1, price: 4500, status: 'Available' },
   { id: 'r7', propertyId: 'p2', roomNumber: '304B', type: 'Double', capacity: 2, price: 6500, status: 'Occupied' },
   { id: 'r8', propertyId: 'p2', roomNumber: '401', type: 'Dorm', capacity: 5, price: 2000, status: 'Available' },
-  
   { id: 'r9', propertyId: 'p3', roomNumber: 'A-402', type: 'Suite', capacity: 4, price: 25000, status: 'Available' },
   { id: 'r10', propertyId: 'p3', roomNumber: 'B-201', type: 'Suite', capacity: 4, price: 25000, status: 'Occupied' },
-];
-
-export const mockTenants: Tenant[] = [
-  { id: 't1', name: 'Rahul Sharma', email: 'rahul@example.com', phone: '+91 9876543210', propertyId: 'p1', roomNumber: '101', status: 'Active', joinDate: '2023-10-15' },
-  { id: 't2', name: 'Priya Patel', email: 'priya@example.com', phone: '+91 9876543211', propertyId: 'p2', roomNumber: '205A', status: 'Active', joinDate: '2024-01-20' },
-  { id: 't3', name: 'Amit Kumar', email: 'amit@example.com', phone: '+91 9876543212', propertyId: 'p3', roomNumber: 'A-402', status: 'Pending', joinDate: '2024-05-15' },
-  { id: 't4', name: 'Sneha Reddy', email: 'sneha@example.com', phone: '+91 9876543213', propertyId: 'p1', roomNumber: '102', status: 'Active', joinDate: '2024-02-10' },
-  { id: 't5', name: 'Vikram Singh', email: 'vikram@example.com', phone: '+91 9876543214', propertyId: 'p2', roomNumber: '304B', status: 'Inactive', joinDate: '2023-08-05' },
-  { id: 't6', name: 'Neha Gupta', email: 'neha@example.com', phone: '+91 9876543215', propertyId: 'p1', roomNumber: '105', status: 'Active', joinDate: '2024-03-22' },
-  { id: 't7', name: 'Sanjay Das', email: 'sanjay@example.com', phone: '+91 9876543216', propertyId: 'p3', roomNumber: 'B-201', status: 'Active', joinDate: '2024-04-01' },
-];
-
-export const mockBookings: Booking[] = [
-  { id: 'b1', tenantName: 'Vikram Singh', propertyId: 'p1', propertyName: 'Sunrise PG', roomNumber: '102', checkInDate: '2024-05-10', checkOutDate: '2025-05-09', amount: 8500, status: 'Confirmed', paymentStatus: 'Paid', source: 'Direct', guestEmail: 'vikram@example.com', guestPhone: '+91 9876543210' },
-  { id: 'b2', tenantName: 'Neha Gupta', propertyId: 'p2', propertyName: 'Blue Horizon Hostel', roomNumber: '304B', checkInDate: '2024-05-14', checkOutDate: '2024-11-13', amount: 6500, status: 'Pending', paymentStatus: 'Unpaid', source: 'Booking.com', guestEmail: 'neha@example.com', guestPhone: '+91 9876543211', specialRequests: 'Late Check-in' },
-  { id: 'b3', tenantName: 'Sanjay Reddy', propertyId: 'p3', propertyName: 'Oakwood Apartments', roomNumber: 'B-201', checkInDate: '2024-04-01', checkOutDate: '2025-03-31', amount: 25000, status: 'Completed', paymentStatus: 'Paid', source: 'Airbnb', guestEmail: 'sanjay@example.com', guestPhone: '+91 9876543212' },
-  { id: 'b4', tenantName: 'Anjali Desai', propertyId: 'p1', propertyName: 'Sunrise PG', roomNumber: '105', checkInDate: '2024-05-16', checkOutDate: '2024-08-15', amount: 8500, status: 'Confirmed', paymentStatus: 'Partial', source: 'Agoda', guestEmail: 'anjali@example.com', guestPhone: '+91 9876543213' },
-  { id: 'b5', tenantName: 'John Doe', propertyId: 'p2', propertyName: 'Blue Horizon Hostel', roomNumber: '301', checkInDate: '2024-05-01', checkOutDate: '2024-05-05', amount: 4500, status: 'Cancelled', paymentStatus: 'Unpaid', source: 'Direct', guestEmail: 'john@example.com', guestPhone: '+1 555 1234', specialRequests: 'Changed mind' },
-  { id: 'b6', tenantName: 'Rahul Sharma', propertyId: 'p1', propertyName: 'Sunrise PG', roomNumber: '101', checkInDate: '2023-10-15', checkOutDate: '2024-10-14', amount: 12000, status: 'Confirmed', paymentStatus: 'Paid', source: 'Direct', guestEmail: 'rahul@example.com', guestPhone: '+91 9876543215' }
 ];
 
 export const mockRevenueData: RevenueData[] = [
@@ -71,13 +122,35 @@ export const mockRevenueData: RevenueData[] = [
 ];
 
 export const mockTransactions: Transaction[] = [
-  { id: 'txn_101', date: '2024-05-18T10:30:00Z', description: 'Rent Payment - Sunrise PG (102)', amount: 8500, type: 'Income', status: 'Completed', referenceId: 'b1' },
-  { id: 'txn_102', date: '2024-05-18T14:15:00Z', description: 'Plumbing Repair - Blue Horizon', amount: 1500, type: 'Expense', status: 'Completed' },
-  { id: 'txn_103', date: '2024-05-17T09:00:00Z', description: 'Advance Booking - Oakwood Apts', amount: 25000, type: 'Income', status: 'Completed', referenceId: 'b3' },
-  { id: 'txn_104', date: '2024-05-16T11:45:00Z', description: 'Partial Rent - Sunrise PG (105)', amount: 4500, type: 'Income', status: 'Pending', referenceId: 'b4' },
-  { id: 'txn_105', date: '2024-05-15T16:20:00Z', description: 'Internet Bill Payment', amount: 2999, type: 'Expense', status: 'Completed' },
-  { id: 'txn_106', date: '2024-05-14T08:30:00Z', description: 'Booking Cancellation Refund', amount: 4500, type: 'Refund', status: 'Completed', referenceId: 'b5' },
-  { id: 'txn_107', date: '2024-05-12T13:00:00Z', description: 'Electricity Bill - Oakwood', amount: 8500, type: 'Expense', status: 'Pending' },
+  { id: 'txn_101', date: '2026-05-18T10:30:00Z', description: 'Rent Payment', amount: 8500, type: 'Income', status: 'Completed', propertyId: 'p1', roomNumber: '102', category: 'Rent', referenceId: 'rent_101' },
+  { id: 'txn_102', date: '2026-05-18T14:15:00Z', description: 'Plumbing Repair - Blue Horizon', amount: 1500, type: 'Expense', status: 'Completed', propertyId: 'p2' },
+  { id: 'txn_103', date: '2026-05-17T09:00:00Z', description: 'Advance Rent', amount: 25000, type: 'Income', status: 'Completed', propertyId: 'p3', roomNumber: 'B-201', category: 'Rent', referenceId: 'rent_103' },
+  { id: 'txn_104', date: '2026-05-16T11:45:00Z', description: 'Partial Rent', amount: 4500, type: 'Income', status: 'Pending', propertyId: 'p1', roomNumber: '105', category: 'Rent', referenceId: 'rent_104' },
+  { id: 'txn_105', date: '2026-05-15T16:20:00Z', description: 'Internet Bill Payment', amount: 2999, type: 'Expense', status: 'Completed', propertyId: 'p1' },
+  { id: 'txn_106', date: '2026-05-14T08:30:00Z', description: 'Security Deposit Refund', amount: 4500, type: 'Refund', status: 'Completed', propertyId: 'p2', roomNumber: '304B', category: 'Security Deposit', referenceId: 'rent_106' },
+  { id: 'txn_107', date: '2026-05-12T13:00:00Z', description: 'Electricity Bill - Oakwood', amount: 8500, type: 'Expense', status: 'Pending', propertyId: 'p3' },
+  { id: 'txn_108', date: '2026-05-11T12:10:00Z', description: 'Rent Payment', amount: 12000, type: 'Income', status: 'Completed', propertyId: 'p4', roomNumber: '204', category: 'Rent', referenceId: 'rent_108' },
+  { id: 'txn_109', date: '2026-05-10T09:30:00Z', description: 'Lift Service - Marin Hotel', amount: 6200, type: 'Expense', status: 'Completed', propertyId: 'p4' },
+  { id: 'txn_110', date: '2026-05-08T10:00:00Z', description: 'Security Deposit', amount: 17000, type: 'Income', status: 'Completed', propertyId: 'p1', roomNumber: '101', category: 'Security Deposit', referenceId: 'dep_110' },
+  { id: 'txn_111', date: '2026-05-07T11:00:00Z', description: 'Security Deposit', amount: 13000, type: 'Income', status: 'Pending', propertyId: 'p2', roomNumber: '401', category: 'Security Deposit', referenceId: 'dep_111' },
+  { id: 'txn_112', date: '2026-05-06T09:30:00Z', description: 'Rent Payment', amount: 8500, type: 'Income', status: 'Pending', propertyId: 'p1', roomNumber: '201', category: 'Rent', referenceId: 'rent_112' },
+  { id: 'txn_113', date: '2026-05-05T14:00:00Z', description: 'Security Deposit Refund', amount: 25000, type: 'Refund', status: 'Pending', propertyId: 'p3', roomNumber: 'A-402', category: 'Security Deposit', referenceId: 'dep_113' },
+];
+
+export const mockComplaints: Complaint[] = [
+  { id: 'cmp_101', propertyId: 'p1', timestamp: '2026-05-17T09:20:00Z', complaint: 'Bathroom tap leakage in room 102', type: 'Maintenance', action: 'Solving' },
+  { id: 'cmp_102', propertyId: 'p2', timestamp: '2026-05-16T16:45:00Z', complaint: 'Common area cleaning delayed', type: 'Housekeeping', action: 'Solved' },
+  { id: 'cmp_103', propertyId: 'p3', timestamp: '2026-05-15T11:10:00Z', complaint: 'Rent receipt correction requested', type: 'Rent', action: 'Solving' },
+  { id: 'cmp_104', propertyId: 'p4', timestamp: '2026-05-14T21:35:00Z', complaint: 'Visitor entry dispute at reception', type: 'Security', action: 'Denied' },
+  { id: 'cmp_105', propertyId: 'p1', timestamp: '2026-05-13T08:05:00Z', complaint: 'Wi-Fi speed issue on second floor', type: 'Maintenance', action: 'Solved' },
+];
+
+export const mockTenants: Tenant[] = [
+  { id: 'tenant_101', name: 'Rahul Sharma', propertyName: 'Sunrise PG', roomNumber: '102', bedNumber: 'B1', phone: '+91 98765 43210', rentStatus: 'Paid', moveInDate: '2026-02-10', status: 'Active' },
+  { id: 'tenant_102', name: 'Priya Patel', propertyName: 'Blue Horizon Hostel', roomNumber: '304B', bedNumber: 'B2', phone: '+91 98765 43211', rentStatus: 'Pending', moveInDate: '2026-05-22', status: 'Upcoming' },
+  { id: 'tenant_103', name: 'Amit Kumar', propertyName: 'Oakwood Apartments', roomNumber: 'B-201', bedNumber: 'B1', phone: '+91 98765 43212', rentStatus: 'Paid', moveInDate: '2026-01-18', status: 'Active' },
+  { id: 'tenant_104', name: 'Sneha Reddy', propertyName: 'Marin Hotel', roomNumber: '204', bedNumber: 'B1', phone: '+91 98765 43213', rentStatus: 'Overdue', moveInDate: '2025-11-05', status: 'Notice Period' },
+  { id: 'tenant_105', name: 'Vikram Singh', propertyName: 'Sunrise PG', roomNumber: '105', bedNumber: 'B2', phone: '+91 98765 43214', rentStatus: 'Paid', moveInDate: '2026-03-01', status: 'Active' },
 ];
 
 export const mockStats: DashboardStats = {
@@ -86,24 +159,15 @@ export const mockStats: DashboardStats = {
   occupancyRate: 89,
   monthlyRevenue: 160000,
   activeGuests: 143,
-  pendingBookings: 8,
+  pendingRentItems: 8,
 };
 
-// Simulated API calls for future Firebase integration
 export const fetchProperties = async (): Promise<Property[]> => {
   return new Promise((resolve) => setTimeout(() => resolve(mockProperties), 500));
 };
 
-export const fetchTenants = async (): Promise<Tenant[]> => {
-  return new Promise((resolve) => setTimeout(() => resolve(mockTenants), 500));
-};
-
-export const fetchTenantById = async (id: string): Promise<Tenant | undefined> => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(mockTenants.find(t => t.id === id));
-    }, 400);
-  });
+export const fetchRooms = async (): Promise<Room[]> => {
+  return new Promise((resolve) => setTimeout(() => resolve(mockRooms), 500));
 };
 
 export const fetchDashboardStats = async (): Promise<DashboardStats> => {
@@ -114,38 +178,22 @@ export const fetchRevenueData = async (): Promise<RevenueData[]> => {
   return new Promise((resolve) => setTimeout(() => resolve(mockRevenueData), 800));
 };
 
-export const fetchRecentBookings = async (): Promise<Booking[]> => {
-  return new Promise((resolve) => setTimeout(() => resolve(mockBookings.slice(0, 4)), 500));
-};
-
-export const fetchAllBookings = async (): Promise<Booking[]> => {
-  return new Promise((resolve) => setTimeout(() => resolve(mockBookings), 500));
-};
-
-export const fetchBookingById = async (id: string): Promise<Booking | undefined> => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(mockBookings.find(b => b.id === id));
-    }, 400);
-  });
-};
-
 export const fetchTransactions = async (): Promise<Transaction[]> => {
   return new Promise((resolve) => setTimeout(() => resolve(mockTransactions), 600));
 };
 
-export const fetchPropertyById = async (id: string): Promise<Property | undefined> => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(mockProperties.find(p => p.id === id));
-    }, 300);
-  });
+export const fetchComplaints = async (): Promise<Complaint[]> => {
+  return new Promise((resolve) => setTimeout(() => resolve(mockComplaints), 500));
+};
+
+export const fetchTenants = async (): Promise<Tenant[]> => {
+  return new Promise((resolve) => setTimeout(() => resolve(mockTenants), 500));
 };
 
 export const fetchRoomsByPropertyId = async (propertyId: string): Promise<Room[]> => {
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve(mockRooms.filter(r => r.propertyId === propertyId));
+      resolve(mockRooms.filter((room) => room.propertyId === propertyId));
     }, 400);
   });
 };

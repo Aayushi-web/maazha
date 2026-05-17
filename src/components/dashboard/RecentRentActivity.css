@@ -1,13 +1,14 @@
-.bookings-card {
-  padding: var(--space-6);
+.rent-activity-card {
   display: flex;
   flex-direction: column;
+  padding: var(--space-6);
 }
 
-.bookings-header {
+.rent-activity-header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
   margin-bottom: var(--space-6);
 }
 
@@ -23,19 +24,19 @@
 
 .mz-table th {
   padding: var(--space-3) var(--space-4);
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border-default);
   font-size: 0.8125rem;
   font-weight: 600;
-  color: var(--text-muted);
-  text-transform: uppercase;
   letter-spacing: 0.05em;
-  border-bottom: 1px solid var(--border-default);
+  text-transform: uppercase;
 }
 
 .mz-table td {
   padding: var(--space-4);
-  font-size: 0.9375rem;
   color: var(--text-secondary);
   border-bottom: 1px solid var(--border-default);
+  font-size: 0.9375rem;
 }
 
 .mz-table tbody tr {
@@ -47,7 +48,7 @@
 }
 
 .mz-table tbody tr:last-child td {
-  border-bottom: none;
+  border-bottom: 0;
 }
 
 .font-medium {
@@ -64,6 +65,6 @@
 
 .loading-state {
   padding: var(--space-8);
-  text-align: center;
   color: var(--text-muted);
+  text-align: center;
 }

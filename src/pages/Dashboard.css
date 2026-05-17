@@ -4,100 +4,253 @@
   gap: var(--space-6);
 }
 
-.dashboard-header-section {
+.dashboard-header-section,
+.dashboard-section-title {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-5);
+}
+
+.dashboard-header-section .text-body,
+.dashboard-section-title .text-body {
+  margin-top: var(--space-2);
+}
+
+.dashboard-section-title > span,
+.dashboard-select-label span,
+.dashboard-filter-card span {
+  color: var(--text-muted);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.dashboard-select-label {
+  display: grid;
+  gap: var(--space-2);
+  flex: 0 0 280px;
+}
+
+.dashboard-select {
+  height: 44px;
+  min-width: 220px;
+}
+
+.dashboard-card-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-6);
+}
+
+.dashboard-summary-card {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-4);
+  min-height: 124px;
+}
+
+.dashboard-summary-card__icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+}
+
+.dashboard-summary-card span {
+  display: block;
   margin-bottom: var(--space-2);
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  line-height: 1.35;
+  text-transform: uppercase;
 }
 
-.dashboard-stats-grid {
+.dashboard-summary-card strong {
+  display: block;
+  color: var(--color-midnight);
+  font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: clamp(1.35rem, 2.4vw, 1.9rem);
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.dashboard-filter-cards,
+.dashboard-finance-section {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-6);
 }
 
-.dashboard-charts-grid {
+.dashboard-filter-card {
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: var(--space-6);
-}
-
-.secondary-chart-wrapper {
-  padding: var(--space-6);
-  display: flex;
-  flex-direction: column;
-}
-
-.dummy-chart-area {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+  grid-template-columns: auto minmax(0, 1fr);
   align-items: center;
-  justify-content: center;
-  gap: var(--space-6);
+  gap: var(--space-4);
 }
 
-.pie-placeholder {
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  background: conic-gradient(
-    var(--color-brand) 0% 45%,
-    var(--status-success) 45% 80%,
-    var(--status-warning) 80% 100%
-  );
-  position: relative;
+.dashboard-filter-card > svg {
+  color: var(--color-brand);
 }
 
-.pie-placeholder::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100px;
-  height: 100px;
-  background-color: var(--bg-surface);
-  border-radius: 50%;
+.dashboard-filter-card strong,
+.dashboard-filter-card small {
+  display: block;
 }
 
-.pie-legend {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-  width: 100%;
+.dashboard-filter-card strong {
+  margin-top: var(--space-2);
+  color: var(--text-primary);
+  font-size: 1.125rem;
 }
 
-.legend-item {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  font-size: 0.875rem;
+.dashboard-filter-card small {
+  margin-top: var(--space-1);
   color: var(--text-secondary);
+  font-size: 0.875rem;
 }
 
-.dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
+.dashboard-finance-section {
+  grid-template-columns: minmax(260px, 0.75fr) minmax(0, 1.45fr);
+  align-items: stretch;
 }
 
-.dot-1 { background-color: var(--color-brand); }
-.dot-2 { background-color: var(--status-success); }
-.dot-3 { background-color: var(--status-warning); }
+.dashboard-finance-cards {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.dashboard-chart-card,
+.dashboard-occupancy-section,
+.dashboard-complaints {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.dashboard-chart-area {
+  min-height: 300px;
+}
+
+.dashboard-section-title--with-select {
+  align-items: flex-end;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.mz-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.mz-table th {
+  padding: var(--space-3) var(--space-4);
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border-default);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.mz-table td {
+  padding: var(--space-4);
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-default);
+  font-size: 0.9375rem;
+  vertical-align: top;
+}
+
+.mz-table tbody tr {
+  transition: var(--transition-fast);
+}
+
+.mz-table tbody tr:hover {
+  background-color: var(--bg-page);
+}
+
+.mz-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.dashboard-action-select {
+  min-width: 118px;
+  border: 0;
+  border-radius: var(--radius-full);
+  padding: 6px 28px 6px 12px;
+  color: var(--text-primary);
+  font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  outline: none;
+}
+
+.dashboard-action-select:focus-visible {
+  box-shadow: 0 0 0 3px var(--focus-ring);
+}
+
+.font-medium {
+  font-weight: 600;
+}
+
+.text-primary {
+  color: var(--color-midnight) !important;
+}
+
+.loading-state {
+  padding: var(--space-8);
+  color: var(--text-muted);
+  text-align: center;
+}
 
 @media (max-width: 1200px) {
-  .dashboard-stats-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .dashboard-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dashboard-finance-section {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-finance-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-@media (max-width: 992px) {
-  .dashboard-charts-grid {
+@media (max-width: 760px) {
+  .dashboard-header-section,
+  .dashboard-section-title,
+  .dashboard-section-title--with-select,
+  .dashboard-filter-cards,
+  .dashboard-finance-cards {
+    align-items: stretch;
     grid-template-columns: 1fr;
+    flex-direction: column;
+  }
+
+  .dashboard-select-label,
+  .dashboard-select {
+    width: 100%;
+    min-width: 0;
   }
 }
 
 @media (max-width: 640px) {
-  .dashboard-stats-grid {
+  .dashboard-card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-summary-card,
+  .dashboard-filter-card {
     grid-template-columns: 1fr;
   }
 }

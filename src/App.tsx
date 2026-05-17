@@ -1,14 +1,10 @@
-import { Routes, Route } from 'react-router-dom'
+import { Navigate, Routes, Route } from 'react-router-dom'
 import LandingPage from './pages/LandingPage'
 import Dashboard from './pages/Dashboard'
-import PropertiesPage from './pages/PropertiesPage'
-import PropertyDetailsPage from './pages/PropertyDetailsPage'
-import TenantsPage from './pages/TenantsPage'
-import TenantProfilePage from './pages/TenantProfilePage'
-import BookingsPage from './pages/BookingsPage'
-import BookingDetailsPage from './pages/BookingDetailsPage'
-import FinancePage from './pages/FinancePage'
-import SettingsPage from './pages/SettingsPage'
+import PropertyManagementPage from './pages/PropertyManagementPage'
+import RentManagementPage from './pages/RentManagementPage'
+import ExpenseManagementPage from './pages/ExpenseManagementPage'
+import TenantManagementPage from './pages/TenantManagementPage'
 
 import './App.css'
 
@@ -20,7 +16,6 @@ function App() {
     <Routes>
       <Route path="/" element={<LandingPage />} />
       
-      {/* Protected Dashboard Routes */}
       <Route 
         path="/dashboard" 
         element={
@@ -33,92 +28,49 @@ function App() {
       />
       
       <Route 
-        path="/properties" 
+        path="/property-management" 
         element={
           <ProtectedRoute>
             <DashboardLayout>
-              <PropertiesPage />
+              <PropertyManagementPage />
             </DashboardLayout>
           </ProtectedRoute>
         } 
       />
 
       <Route 
-        path="/properties/:id" 
+        path="/rent-management" 
         element={
           <ProtectedRoute>
             <DashboardLayout>
-              <PropertyDetailsPage />
+              <RentManagementPage />
             </DashboardLayout>
           </ProtectedRoute>
         } 
       />
 
       <Route 
-        path="/bookings" 
+        path="/expense-management" 
         element={
           <ProtectedRoute>
             <DashboardLayout>
-              <BookingsPage />
+              <ExpenseManagementPage />
             </DashboardLayout>
           </ProtectedRoute>
         } 
       />
 
-      <Route 
-        path="/bookings/:id" 
+      <Route
+        path="/tenant-management"
         element={
           <ProtectedRoute>
             <DashboardLayout>
-              <BookingDetailsPage />
+              <TenantManagementPage />
             </DashboardLayout>
           </ProtectedRoute>
-        } 
+        }
       />
-
-      <Route 
-        path="/tenants" 
-        element={
-          <ProtectedRoute>
-            <DashboardLayout>
-              <TenantsPage />
-            </DashboardLayout>
-          </ProtectedRoute>
-        } 
-      />
-
-      <Route 
-        path="/tenants/:id" 
-        element={
-          <ProtectedRoute>
-            <DashboardLayout>
-              <TenantProfilePage />
-            </DashboardLayout>
-          </ProtectedRoute>
-        } 
-      />
-
-      <Route 
-        path="/finance" 
-        element={
-          <ProtectedRoute>
-            <DashboardLayout>
-              <FinancePage />
-            </DashboardLayout>
-          </ProtectedRoute>
-        } 
-      />
-
-      <Route 
-        path="/settings" 
-        element={
-          <ProtectedRoute>
-            <DashboardLayout>
-              <SettingsPage />
-            </DashboardLayout>
-          </ProtectedRoute>
-        } 
-      />
+      <Route path="*" element={<Navigate to="/dashboard" replace />} />
     </Routes>
   )
 }

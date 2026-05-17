@@ -19,6 +19,13 @@
   align-items: center;
   gap: var(--space-3);
   padding: 0 var(--space-2) var(--space-8);
+  text-decoration: none;
+}
+
+.sidebar-brand:focus-visible {
+  border-radius: var(--radius-md);
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 4px;
 }
 
 .brand-logo {

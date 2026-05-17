@@ -1,15 +1,40 @@
 import { useState, useRef, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Search, Bell, User, CheckCircle, Info, AlertTriangle } from 'lucide-react';
 import './Header.css';
 
 const MOCK_NOTIFICATIONS = [
-  { id: 1, type: 'success', message: 'Booking #B1 confirmed successfully', time: '10 mins ago', read: false },
-  { id: 2, type: 'warning', message: 'Payment pending for Oakwood Apartments', time: '1 hour ago', read: false },
-  { id: 3, type: 'info', message: 'New tenant added: Rahul Sharma', time: '2 hours ago', read: false },
+  { id: 1, type: 'success', message: 'Rent collection updated for Sunrise PG', time: '10 mins ago', read: false },
+  { id: 2, type: 'warning', message: 'Expense approval pending for Oakwood Apartments', time: '1 hour ago', read: false },
+  { id: 3, type: 'info', message: 'Property inspection scheduled for Blue Horizon', time: '2 hours ago', read: false },
   { id: 4, type: 'info', message: 'System maintenance scheduled for tonight', time: '1 day ago', read: true },
 ];
 
+const PAGE_TITLES: Record<string, { title: string; subtitle: string }> = {
+  '/dashboard': {
+    title: 'Dashboard',
+    subtitle: 'Welcome back to your management overview',
+  },
+  '/property-management': {
+    title: 'Property Management',
+    subtitle: 'Track rooms, status, and operational readiness',
+  },
+  '/tenant-management': {
+    title: 'Tenant Management',
+    subtitle: 'Track residents, room assignments, and rent status',
+  },
+  '/rent-management': {
+    title: 'Rent Management',
+    subtitle: 'Monitor collections, dues, and rent activity',
+  },
+  '/expense-management': {
+    title: 'Expense Management',
+    subtitle: 'Review spend, approvals, and vendor payments',
+  },
+};
+
 const Header = () => {
+  const location = useLocation();
   const [isNotifOpen, setIsNotifOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [isEditingProfile, setIsEditingProfile] = useState(false);
@@ -24,6 +49,7 @@ const Header = () => {
   const profileRef = useRef<HTMLDivElement>(null);
 
   const unreadCount = MOCK_NOTIFICATIONS.filter(n => !n.read).length;
+  const pageTitle = PAGE_TITLES[location.pathname] || PAGE_TITLES['/dashboard'];
 
   // Handle click outside to close
   useEffect(() => {
@@ -58,14 +84,14 @@ const Header = () => {
   return (
     <header className="dashboard-header">
       <div className="header-left">
-        <h2 className="header-title">Overview</h2>
-        <p className="header-subtitle">Welcome back to your dashboard</p>
+        <h2 className="header-title">{pageTitle.title}</h2>
+        <p className="header-subtitle">{pageTitle.subtitle}</p>
       </div>
       
       <div className="header-right">
         <div className="search-bar">
           <Search size={18} className="search-icon" />
-          <input type="text" placeholder="Search..." className="mz-input search-input" />
+          <input type="text" placeholder="Search dashboard..." className="mz-input search-input" />
         </div>
         
         <div className="notifications-wrapper" ref={notifRef}>
@@ -175,7 +201,7 @@ const Header = () => {
                       Edit Profile Details
                     </button>
                     <button className="mz-btn mz-btn--ghost w-100 justify-start">
-                      Account Settings
+                      Profile Preferences
                     </button>
                     <div className="divider"></div>
                     <button className="mz-btn mz-btn--ghost text-error w-100 justify-start" onClick={() => window.location.href = '/'}>

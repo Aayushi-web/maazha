@@ -1,0 +1,345 @@
+.management-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.management-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-6);
+}
+
+.management-header .text-body {
+  margin-top: var(--space-2);
+}
+
+.management-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-6);
+}
+
+.management-stats-grid--three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.management-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.management-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.management-toolbar .search-bar {
+  flex: 1 1 360px;
+  max-width: 520px;
+}
+
+.management-result-count {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.management-tabs {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  background: var(--bg-section-alt);
+}
+
+.tab-btn {
+  border: 0;
+  border-radius: var(--radius-sm);
+  padding: 8px 14px;
+  color: var(--text-secondary);
+  background: transparent;
+  font-weight: 600;
+  transition: var(--transition-fast);
+}
+
+.tab-btn:hover,
+.tab-btn.active {
+  color: var(--text-on-brand);
+  background: var(--color-brand);
+}
+
+.management-list {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.management-list-item {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  gap: var(--space-5);
+  overflow: hidden;
+  padding: var(--space-4);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+}
+
+.management-list-image {
+  overflow: hidden;
+  min-height: 132px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-section-alt);
+}
+
+.management-list-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.management-list-content {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.management-list-content h2 {
+  color: var(--text-primary);
+  font-size: 1.125rem;
+}
+
+.management-list-content p {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+}
+
+.management-meter {
+  height: 10px;
+  overflow: hidden;
+  border-radius: var(--radius-full);
+  background: var(--color-cloud);
+}
+
+.management-meter span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--color-brand);
+}
+
+.management-list-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.management-list-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.management-delete-btn {
+  color: var(--status-error);
+  border-color: rgba(231, 76, 60, 0.28);
+}
+
+.management-delete-btn:hover {
+  color: var(--text-on-brand);
+  border-color: var(--status-error);
+  background: var(--status-error);
+}
+
+.management-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: var(--space-4);
+  background: rgba(10, 30, 46, 0.58);
+  backdrop-filter: blur(6px);
+}
+
+.management-modal {
+  width: min(560px, 100%);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  background: var(--bg-surface);
+  box-shadow: var(--shadow-lg);
+}
+
+.management-modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+}
+
+.management-modal-header .text-body {
+  margin-top: var(--space-2);
+}
+
+.management-icon-button {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  background: var(--bg-section-alt);
+  transition: var(--transition-fast);
+}
+
+.management-icon-button:hover {
+  color: var(--color-brand);
+  border-color: var(--color-brand);
+  background: var(--hover-overlay);
+}
+
+.management-form,
+.management-form label {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.management-form {
+  gap: var(--space-4);
+}
+
+.management-form label span {
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.management-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.management-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.mz-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.mz-table th {
+  padding: var(--space-3) var(--space-4);
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border-default);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.mz-table td {
+  padding: var(--space-4);
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-default);
+  font-size: 0.9375rem;
+  vertical-align: top;
+}
+
+.mz-table tbody tr:hover {
+  background-color: var(--bg-page);
+}
+
+.mz-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.font-medium {
+  font-weight: 600;
+}
+
+.text-primary {
+  color: var(--color-midnight) !important;
+}
+
+@media (max-width: 1200px) {
+  .management-stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .management-header,
+  .management-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .management-header .mz-btn,
+  .management-toolbar .search-bar {
+    width: 100%;
+    max-width: none;
+  }
+
+  .management-list-item {
+    grid-template-columns: 1fr;
+  }
+
+  .management-list-image {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media (max-width: 640px) {
+  .management-stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .management-tabs {
+    justify-content: stretch;
+    width: 100%;
+  }
+
+  .tab-btn {
+    flex: 1;
+  }
+
+  .management-form-grid,
+  .management-modal-actions {
+    grid-template-columns: 1fr;
+    flex-direction: column-reverse;
+  }
+
+  .management-modal-actions .mz-btn {
+    width: 100%;
+  }
+}
