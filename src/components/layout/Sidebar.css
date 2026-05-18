@@ -112,7 +112,7 @@
   background-color: rgba(231, 76, 60, 0.1);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .dashboard-sidebar {
     transform: translateX(-100%);
   }

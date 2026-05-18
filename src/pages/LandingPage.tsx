@@ -733,16 +733,16 @@ function HomePage({
                                 <h3>Call Us</h3>
                                 <p>Mon-Fri, 10 AM - 7 PM IST</p>
                                 <a href="tel:+918697839098">+91 869 783 9098</a>
-                                <a href="tel:+911244567890">+91 124 456 7890</a>
+                                
                             </div>
 
                             <div className="mz-contact-card">
                                 <div className="mz-contact-icon">📍</div>
                                 <h3>Visit Us</h3>
-                                <p>Maazha HQ</p>
+                                <p>Maazha</p>
                                 <address>
-                                    42 Tech Park, Sector 62,<br />
-                                    Noida, Uttar Pradesh - 201301<br />
+                                    
+                                Gurugram<br />
                                     India
                                 </address>
                             </div>
